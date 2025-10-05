@@ -36,22 +36,18 @@ export function handleDeleteMeeting({
   id,
   deleteMeeting,
   refreshMeetings,
-  setIsRefreshing,
   selectedMeeting,
   setSelectedMeeting
 }: {
   id: string;
   deleteMeeting: (id: string) => void;
   refreshMeetings: () => void;
-  setIsRefreshing: (val: boolean) => void;
   selectedMeeting: Meeting | null;
   setSelectedMeeting: (meeting: Meeting | null) => void;
 }) {
   deleteMeeting(id);
   toast.success('Meeting deleted successfully!');
-  setIsRefreshing(true);
-    refreshMeetings();
-  setIsRefreshing(false);
+  refreshMeetings();
   if (selectedMeeting?.id === id) {
     setSelectedMeeting(null);
   }

@@ -14,7 +14,6 @@ function App() {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [selectedMeeting, setSelectedMeeting] = useState<Meeting | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>('');
-    const [isRefreshing, setIsRefreshing] = useState(false);
 
   // Filter meetings based on search term
   const filteredMeetings = useMemo(() => filterMeetingsBySearch(meetings, searchTerm), [meetings, searchTerm]);
@@ -36,7 +35,7 @@ function App() {
             <MeetingList
               meetings={filteredMeetings}
               onEditMeeting={meeting => handleEditMeeting({ meeting, setSelectedMeeting, setSelectedDate })}
-              onDeleteMeeting={id => handleDeleteMeeting({ id, deleteMeeting, refreshMeetings, setIsRefreshing, selectedMeeting, setSelectedMeeting })}
+              onDeleteMeeting={id => handleDeleteMeeting({ id, deleteMeeting, refreshMeetings, selectedMeeting, setSelectedMeeting })}
             />
                      </div>
         )}
@@ -57,7 +56,7 @@ function App() {
                 <MeetingList
                   meetings={filterMeetingsByDate(meetings, selectedDate)}
                   onEditMeeting={meeting => handleEditMeeting({ meeting, setSelectedMeeting, setSelectedDate })}
-                  onDeleteMeeting={id => handleDeleteMeeting({ id, deleteMeeting, refreshMeetings, setIsRefreshing, selectedMeeting, setSelectedMeeting })}
+                  onDeleteMeeting={id => handleDeleteMeeting({ id, deleteMeeting, refreshMeetings, selectedMeeting, setSelectedMeeting })}
                 />
               </>
             )}
