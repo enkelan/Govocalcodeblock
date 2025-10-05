@@ -21,8 +21,9 @@ export function useMeetingForm(
 ) {
   const timeOptions = useMemo(() => generateTimeOptions(8, 17), []);
 
-  const getInitialFormData = () => selectedMeeting
-    ? {
+  const getInitialFormData = () => {
+    if (selectedMeeting) {
+      return {
         title: selectedMeeting.title,
         date: selectedMeeting.date,
         startTime: selectedMeeting.startTime,
@@ -30,16 +31,19 @@ export function useMeetingForm(
         description: selectedMeeting.description,
         attendee: selectedMeeting.attendee,
         email: selectedMeeting.email,
-      }
-    : {
+      };
+    } else {
+      return {
         title: '',
         date: formatDateForInput(selectedDate),
-        startTime: '',
-        endTime: '',
+        startTime: timeOptions[0]?.value || '',
+        endTime: timeOptions[1]?.value || '',
         description: '',
         attendee: '',
         email: '',
       };
+    }
+  };
 
   const [formData, setFormData] = useState<FormData>(getInitialFormData());
 
@@ -73,8 +77,8 @@ export function useMeetingForm(
       setFormData({
         title: '',
         date: formatDateForInput(selectedDate),
-        startTime: '',
-        endTime: '',
+        startTime: timeOptions[0]?.value || '',
+        endTime: timeOptions[1]?.value || '',
         description: '',
         attendee: '',
         email: '',
