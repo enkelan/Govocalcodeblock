@@ -20,9 +20,10 @@ function App() {
 
   return (
     <main className="min-h-screen bg-zinc-800 text-gray-800">
-      <Toaster position="top-right" />
+      <Toaster position="bottom-right" />
       <div className="container mx-auto py-8">
         <header className="mb-8">
+            <h1 className="text-4xl font-bold text-center text-white mb-4">Meeting Scheduler</h1>
           <SearchBar
             searchTerm={searchTerm}
             onSearchChange={setSearchTerm}
