@@ -1,5 +1,5 @@
 import { useState, useMemo } from 'react';
-import { Toaster, toast } from 'react-hot-toast';
+import { Toaster } from 'react-hot-toast';
 import Calendar from './components/Calendar';
 import MeetingForm from './components/MeetingForm';
 import MeetingList from './components/MeetingList';
@@ -14,7 +14,7 @@ function App() {
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [selectedMeeting, setSelectedMeeting] = useState<Meeting | null>(null);
   const [searchTerm, setSearchTerm] = useState<string>('');
-  const [isRefreshing, setIsRefreshing] = useState<boolean>(false);
+    const [isRefreshing, setIsRefreshing] = useState(false);
 
   // Filter meetings based on search term
   const filteredMeetings = useMemo(() => filterMeetingsBySearch(meetings, searchTerm), [meetings, searchTerm]);
