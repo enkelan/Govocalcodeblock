@@ -1,0 +1,9 @@
+# macOS system files
+.DS_Store
+
+# JetBrains IDE files
+.idea/
+
+# Node modules
+node_modules/
+
